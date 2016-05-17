@@ -75,3 +75,14 @@ TEST(GoalUndoTest,check_getgoal){
   g.undoGoal();
   ASSERT_TRUE(g.getGoal()=="");
 }
+
+
+
+TEST(GoalUndoTest, check_getOperation){
+  GoalUndo g;
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.addOperation("Assign Target","Assign Task 1");
+  g.addOperation("Assign Task 2");
+  ASSERT_TRUE(g.getOperations()=="Assign Task 1 Assign Task 2");
+}
