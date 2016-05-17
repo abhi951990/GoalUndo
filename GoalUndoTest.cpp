@@ -86,3 +86,9 @@ TEST(GoalUndoTest, check_getOperation){
   g.addOperation("Assign Task 2");
   ASSERT_TRUE(g.getOperations()=="Assign Task 1 Assign Task 2");
 }
+
+TEST(GoalUndoTest, check_undoGoal_with_all_branch){
+    GoalUndo g;
+    g.undoGoal();
+    ASSERT_TRUE(g.getGoal()=="");
+}
