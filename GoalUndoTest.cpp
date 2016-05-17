@@ -30,5 +30,17 @@ TEST(GoalUndoTest,check_addition_of_operations){
   GoalUndo g;
   g.addOperation("Reach target","Complete Task 1");
   g.addOperation("Complete Task 2");
+  g.addOperation("Complete Task 3");
+  ASSERT_TRUE(g.getOperations()=="Complete Task 1 Complete Task 2 Complete Task 3");
+}
+
+
+TEST(GoalUndoTest, check_undoOperation){
+  GoalUndo g;
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.addOperation("Complete Task 3");
+  g.undoOperation();
   ASSERT_TRUE(g.getOperations()=="Complete Task 1 Complete Task 2");
+
 }
