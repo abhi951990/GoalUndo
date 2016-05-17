@@ -107,3 +107,32 @@ TEST(GoalUndoTest, check_undoOperation_with_all_branch){
   ASSERT_TRUE(g.getGoal()=="");
   ASSERT_TRUE(g.getOperations()=="");
 }
+
+
+TEST(GoalUndoTest, check_undoOperation_with_all_branch_parameter){
+  GoalUndo g;
+  g.undoOperation("Remove");
+  ASSERT_TRUE(g.getGoal()=="");
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.addOperation("Reach Office","Complete Target 1");
+  g.addOperation("Complete Target 2");
+
+  g.undoOperation("Complete Target 100");
+  ASSERT_FALSE(g.getOperations()=="Complete Target 1");
+
+  g.undoOperation("Complete Target 1");
+  ASSERT_FALSE(g.getOperations()=="Complete Target 1");
+  ASSERT_TRUE(g.getOperations()=="Complete Target 2");
+  g.undoOperation(" ");
+  ASSERT_TRUE(g.getOperations()=="Complete Target 2");
+  g.undoOperation();
+  g.undoOperation();
+  ASSERT_TRUE(g.getOperations()=="Complete Task 1");
+  g.undoOperation("Complete Task 1");
+  ASSERT_TRUE(g.getOperations()=="");
+  ASSERT_TRUE(g.getGoal()=="");   //===>BUG
+
+
+
+}
