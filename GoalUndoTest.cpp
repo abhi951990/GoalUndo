@@ -44,3 +44,12 @@ TEST(GoalUndoTest, check_undoOperation){
   ASSERT_TRUE(g.getOperations()=="Complete Task 1 Complete Task 2");
 
 }
+
+
+TEST(FoalUndoTest, check_undoGoal){
+  GoalUndo g;
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.undoGoal();
+  ASSERT_TRUE(g.getGoal()=="");
+}
