@@ -46,7 +46,7 @@ TEST(GoalUndoTest, check_undoOperation){
 }
 
 
-TEST(FoalUndoTest, check_undoGoal){
+TEST(GoalUndoTest, check_undoGoal){
   GoalUndo g;
   g.addOperation("Reach target","Complete Task 1");
   g.addOperation("Complete Task 2");
