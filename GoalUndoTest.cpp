@@ -92,3 +92,18 @@ TEST(GoalUndoTest, check_undoGoal_with_all_branch){
     g.undoGoal();
     ASSERT_TRUE(g.getGoal()=="");
 }
+
+
+TEST(GoalUndoTest, check_undoOperation_with_all_branch){
+  GoalUndo g;
+  g.undoOperation();
+  ASSERT_TRUE(g.getGoal()=="");
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  // g.undoOperation();
+  g.undoOperation();
+  g.undoOperation();
+
+  ASSERT_TRUE(g.getGoal()=="");
+  ASSERT_TRUE(g.getOperations()=="");
+}
