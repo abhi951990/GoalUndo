@@ -157,3 +157,13 @@ TEST(GoalUndoTest, check_getOperations_with_all_branch){
 
 
 }
+
+
+TEST(GoalUndoTest, check_addOperationGoals_for_all_branch){
+  GoalUndo g;
+  g.addOperation("","Task1");
+  ASSERT_TRUE(g.getOperations()=="");
+  g.addOperation("Goal1","");
+  ASSERT_TRUE(g.getGoal()=="");
+
+}
