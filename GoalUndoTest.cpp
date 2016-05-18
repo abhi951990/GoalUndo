@@ -132,7 +132,15 @@ TEST(GoalUndoTest, check_undoOperation_with_all_branch_parameter){
   g.undoOperation("Complete Task 1");
   ASSERT_TRUE(g.getOperations()=="");
   ASSERT_TRUE(g.getGoal()=="");   //===>BUG
+}
 
-
+TEST(GoalUndoTest, check_getgoal_coverage){
+  GoalUndo g;
+  ASSERT_TRUE(g.getGoal()=="");
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.addOperation("Reach Office","Complete Target 1");
+  g.addOperation("Complete Target 2");
+  ASSERT_TRUE(g.getGoal()=="Reach Office");
 
 }
