@@ -144,3 +144,16 @@ TEST(GoalUndoTest, check_getgoal_coverage){
   ASSERT_TRUE(g.getGoal()=="Reach Office");
 
 }
+
+TEST(GoalUndoTest, check_getOperations_with_all_branch){
+  GoalUndo g;
+  ASSERT_TRUE(g.getOperations()=="");
+  g.addOperation("Reach target","Complete Task 1");
+  g.addOperation("Complete Task 2");
+  g.addOperation("Assign Target","Assign Task 1");
+  g.addOperation("Assign Task 2");
+  ASSERT_FALSE(g.getOperations()=="Assign Task 1 Assign Task 2 ");
+  ASSERT_TRUE(g.getOperations()=="Assign Task 1 Assign Task 2");
+
+
+}
