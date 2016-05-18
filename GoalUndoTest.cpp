@@ -154,7 +154,9 @@ TEST(GoalUndoTest, check_getOperations_with_all_branch){
   g.addOperation("Assign Task 2");
   ASSERT_FALSE(g.getOperations()=="Assign Task 1 Assign Task 2 ");
   ASSERT_TRUE(g.getOperations()=="Assign Task 1 Assign Task 2");
-
+  g.addOperation("Assign Task 3");
+  g.addOperation("Assign Task 4");
+  ASSERT_TRUE(g.getOperations()=="Assign Task 1 Assign Task 2 Assign Task 3 Assign Task 4");
 
 }
 
@@ -165,17 +167,5 @@ TEST(GoalUndoTest, check_addOperationGoals_for_all_branch){
   ASSERT_TRUE(g.getOperations()=="");
   g.addOperation("Goal1","");
   ASSERT_TRUE(g.getGoal()=="");
-
-}
-
-TEST(GoalUndoTest,check_addOperation_for_all_branch){
-  GoalUndo g;
-  g.addOperation("");
-  ASSERT_TRUE(g.getOperations()=="");
-  g.addOperation("Goal1");
-  ASSERT_EQ(g.getGoal(),g.getOperations());
-  // ASSERT_TRUE(g.getOperations()=="Goal1");
-  g.addOperation("Task1");
-  ASSERT_TRUE(g.getOperations()=="Goal1 Task1");
 
 }
